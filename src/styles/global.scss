@@ -7,3 +7,17 @@ body {
     color: var(--theme-text-color-secondary);
     background: var(--theme-primary-dark);
 }
+
+.btn {
+    &.btn-w-icon {
+
+    }
+    &.btn-purple {
+        @include button-variant($highlight-purple, $highlight-purple, $highlight-purple);
+    }
+}
+
+.icon {
+    display: inline-block;
+    fill: currentColor;
+}

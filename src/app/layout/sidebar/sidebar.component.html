@@ -7,12 +7,18 @@
   <div class="sidebar-bottom">
     <div class="sidebar-theme-switcher">
       <button class="sidebar-theme-button" (click)="changeTheme()">
-        <img src="/assets/img/icon-sun.svg" alt="Light Theme" *ngIf="currentTheme == 'theme-dark'" />
-        <img src="/assets/img/icon-moon.svg" alt="Dark Theme" *ngIf="currentTheme == 'theme-light'" />
+        <svg-icon-sprite
+          [src]="'assets/sprites/sprite.svg#icon-sun'"
+          [width]="'25px'"
+          *ngIf="currentTheme == 'theme-dark'"
+        ></svg-icon-sprite>
+        <svg-icon-sprite
+          [src]="'assets/sprites/sprite.svg#icon-moon'"
+          [width]="'25px'"
+          *ngIf="currentTheme == 'theme-light'"
+        ></svg-icon-sprite>
       </button>
     </div>
-    <div class="sidebar-user-wrapper">
-      
-    </div>
+    <div class="sidebar-user-wrapper"></div>
   </div>
 </div>

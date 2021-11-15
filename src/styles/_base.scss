@@ -1,5 +1,9 @@
 $font-spartan: "Spartan", sans-serif;
 
+// local usage
+$highlight-purple: #7c5dfa;
+
+
 $--theme-primary: --theme-primary;
 $--theme-primary-dark: --theme-primary-dark;
 $--theme-highlight-purple: --theme-highlight-purple;
@@ -10,7 +14,7 @@ $--theme-text-color-secondary: --theme-text-color-secondary;
 $theme-map-dark: (
     $--theme-primary: #1e2139,
     $--theme-primary-dark: #141624,
-    $--theme-highlight-purple: #7c5dfa,
+    $--theme-highlight-purple: $highlight-purple,
     $--theme-text-color: #ffffff,
     $--theme-text-color-secondary: #e0e4fa,
 );
