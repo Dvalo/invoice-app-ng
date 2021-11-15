@@ -4,19 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+import { SidebarComponent } from './layout/sidebar/sidebar.component';
+
+import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SidebarComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule
-  ],
+  declarations: [AppComponent, SidebarComponent, ContentLayoutComponent],
+  imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

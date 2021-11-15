@@ -4,6 +4,6 @@ body {
     &.theme-dark {
         @include spread-map($theme-map-dark);
     }
-
+    color: var(--theme-text-color-secondary);
     background: var(--theme-primary-dark);
 }
