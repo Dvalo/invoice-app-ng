@@ -1,6 +1,9 @@
 @import "src/styles/main";
 
 .sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     position: fixed;
     width: 105px;
     height: 100%;
@@ -20,11 +23,26 @@
             height: auto;
         }
     }
+    .sidebar-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        .sidebar-theme-switcher {
+            padding: 20px 0;
+            opacity: 0.6;
+            transition: 0.25s ease-in-out;
 
-    .sidebar-theme-button {
-        background: none;
-        border: none;
-        outline: none;
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        .sidebar-theme-button {
+            background: none;
+            border: none;
+            outline: none;
+        }
     }
 
 }
