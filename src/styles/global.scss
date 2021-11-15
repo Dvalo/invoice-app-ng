@@ -1,0 +1,9 @@
+@import "mixins";
+
+body {
+    &.theme-dark {
+        @include spread-map($theme-map-dark);
+    }
+
+    background: var(--theme-primary-dark);
+}
