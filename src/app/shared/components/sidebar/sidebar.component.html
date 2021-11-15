@@ -1,0 +1,15 @@
+<div class="sidebar">
+  <div class="sidebar-top">
+    <a href="/">
+      <img src="/assets/img/logo.svg" alt="Invoice Web App" />
+    </a>
+  </div>
+  <div class="sidebar-bottom">
+    <div class="sidebar-theme-switcher">
+      <button class="sidebar-theme-button" (click)="changeTheme()">
+        <img src="/assets/img/icon-sun.svg" alt="Light Theme" *ngIf="currentTheme == 'theme-dark'" />
+        <img src="/assets/img/icon-moon.svg" alt="Dark Theme" *ngIf="currentTheme == 'theme-light'" />
+      </button>
+    </div>
+  </div>
+</div>
