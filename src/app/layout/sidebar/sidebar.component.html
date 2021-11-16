@@ -1,12 +1,19 @@
 <div class="sidebar">
-  <div class="sidebar-top">
+  <div class="sidebar-logo">
     <a href="/">
       <img src="/assets/img/logo.svg" alt="Invoice Web App" />
     </a>
   </div>
-  <div class="sidebar-bottom">
+  <div class="sidebar-settings">
     <div class="sidebar-theme-switcher">
-      <button class="sidebar-theme-button" (click)="changeTheme()">
+      <button
+        [ngClass]="
+          currentTheme === 'theme-dark'
+            ? 'sidebar-theme-button light'
+            : 'sidebar-theme-button dark'
+        "
+        (click)="changeTheme()"
+      >
         <svg-icon-sprite
           [src]="'assets/sprites/sprite.svg#icon-sun'"
           [width]="'25px'"

@@ -1,13 +1,18 @@
 <a href="" class="invoice-item">
   <div class="invoice-general-details">
     <div class="invoice-id"><span>#</span>{{ invoice.id }}</div>
-    <div class="invoice-date">
+    <div class="invoice-date invoice-date-d">
       Due {{ invoice.paymentDue | date: "dd MMM yyyy" }}
     </div>
     <div class="invoice-name">{{ invoice.clientName }}</div>
   </div>
   <div class="invoice-price-details">
-    <div class="invoice-price">£{{ invoice.total }}</div>
+    <div class="invoice-m-details">
+      <div class="invoice-date">
+        Due {{ invoice.paymentDue | date: "dd MMM yyyy" }}
+      </div>
+      <div class="invoice-price">£{{ invoice.total }}</div>
+    </div>
     <div
       [ngClass]="[
         invoice.status === 'paid'

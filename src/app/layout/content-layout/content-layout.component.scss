@@ -1,5 +1,12 @@
+@import "src/styles/base";
+@import "src/styles/bootstrap";
+
 .invoice-content {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+
+    @include media-breakpoint-up(lg) {
+        margin-left: 105px;
+    }
 }

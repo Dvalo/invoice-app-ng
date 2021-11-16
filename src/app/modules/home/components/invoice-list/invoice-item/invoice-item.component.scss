@@ -1,11 +1,14 @@
+@import "src/styles/base";
+@import "src/styles/bootstrap";
+
 .invoice-item {
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: space-between;
-    height: 90px;
-    padding: 0 24px;
+    padding: 24px;
     margin-bottom: 24px;
-    text-decoration: none;
+    text-decoration: none !important;
     border-radius: 8px;
     border: 1px solid transparent;
     background: var(--theme-primary);
@@ -15,10 +18,25 @@
         border-color: var(--theme-highlight-purple);
     }
 
+    @include media-breakpoint-up(lg) {
+        flex-direction: row;
+        height: 90px;
+        padding: 0 24px;
+    }
+
     .invoice-general-details {
         display: flex;
-        font-size: 13px;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 16px;
         color: var(--theme-text-color);
+
+        @include media-breakpoint-up(lg) {
+            width: auto;
+            justify-content: center;
+            margin-bottom: 0;
+            font-size: 13px;
+        }
 
         .invoice-id {
             font-weight: bold;
@@ -27,24 +45,54 @@
                 color: var(--theme-highlight-purple);
             }
         }
-        .invoice-date {
-            color: var(--theme-text-color-secondary);
+    }
+    .invoice-date {
+        color: var(--theme-text-color-secondary);
+
+        &.invoice-date-d {
+            display: none;
+        }
+        
+        @include media-breakpoint-up(lg) {
             margin: 0 24px;
+
+            &.invoice-date-d {
+                display: block;
+            }
         }
     }
     .invoice-price-details {
         display: flex;
         align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        @include media-breakpoint-up(lg) {
+            justify-content: center;
+            width: auto;
+
+            .invoice-date {
+                display: none;
+            }
+        }
 
         .invoice-price {
             color: var(--theme-text-color);
             font-weight: bold;
         }
         .invoice-status {
-            margin: 0 24px;
+
+            @include media-breakpoint-up(lg) {
+                margin: 0 24px;
+            }
         }
     }
     .invoice-expand {
+        display: none;
         stroke: var(--theme-highlight-purple);
+
+        @include media-breakpoint-up(lg) {
+            display: block;
+        }
     }
 }

@@ -1,47 +1,64 @@
-@import "src/styles/main";
+@import "src/styles/base";
+@import "src/styles/bootstrap";
 
 .sidebar {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    position: fixed;
-    width: 105px;
-    height: 100%;
+    position: relative;
+    width: 100%;
     background: var(--theme-primary);
-    border-radius: 0 20px 20px 0;
 
-    .sidebar-top {
+    @include media-breakpoint-up(lg) {
+        flex-direction: column;
+        position: fixed;
+        width: 105px;
+        height: 100%;
+        border-radius: 0 20px 20px 0;
+    }
+
+    .sidebar-logo {
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 105px;
+        padding: 15px;
         background: var(--theme-highlight-purple);
-        border-radius: 0 20px 20px 0;
+
+        @include media-breakpoint-up(lg) {
+            height: 105px;
+            border-radius: 0 20px 20px 0;
+        }
 
         img {
             width: 50px;
             height: auto;
         }
     }
-    .sidebar-bottom {
+    .sidebar-settings {
         display: flex;
         align-items: center;
         justify-content: center;
         
         .sidebar-theme-switcher {
             padding: 20px 0;
-            opacity: 0.6;
-            transition: 0.25s ease-in-out;
-
-            &:hover {
-                opacity: 1;
-            }
         }
 
         .sidebar-theme-button {
             background: none;
             border: none;
             outline: none;
+            opacity: 0.5;
+            transition: 0.2s ease;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            &.dark {
+                color: #7E88C3;
+            }
+            &.light {
+                color: #858BB2;
+            }
         }
     }
 
