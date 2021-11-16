@@ -1,0 +1,50 @@
+.invoice-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 90px;
+    padding: 0 24px;
+    margin-bottom: 24px;
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: var(--theme-primary);
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        border-color: var(--theme-highlight-purple);
+    }
+
+    .invoice-general-details {
+        display: flex;
+        font-size: 13px;
+        color: var(--theme-text-color);
+
+        .invoice-id {
+            font-weight: bold;
+
+            span {
+                color: var(--theme-highlight-purple);
+            }
+        }
+        .invoice-date {
+            color: var(--theme-text-color-secondary);
+            margin: 0 24px;
+        }
+    }
+    .invoice-price-details {
+        display: flex;
+        align-items: center;
+
+        .invoice-price {
+            color: var(--theme-text-color);
+            font-weight: bold;
+        }
+        .invoice-status {
+            margin: 0 24px;
+        }
+    }
+    .invoice-expand {
+        stroke: var(--theme-highlight-purple);
+    }
+}

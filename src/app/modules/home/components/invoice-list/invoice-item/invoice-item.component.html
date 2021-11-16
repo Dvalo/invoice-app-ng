@@ -1,0 +1,28 @@
+<a href="" class="invoice-item">
+  <div class="invoice-general-details">
+    <div class="invoice-id"><span>#</span>{{ invoice.id }}</div>
+    <div class="invoice-date">
+      Due {{ invoice.paymentDue | date: "dd MMM yyyy" }}
+    </div>
+    <div class="invoice-name">{{ invoice.clientName }}</div>
+  </div>
+  <div class="invoice-price-details">
+    <div class="invoice-price">£{{ invoice.total }}</div>
+    <div
+      [ngClass]="[
+        invoice.status === 'paid'
+          ? 'invoice-status paid'
+          : 'invoice-status pending'
+      ]"
+    >
+      <span class="status-dot"></span>{{ invoice.status | titlecase }}
+    </div>
+    <div class="invoice-expand">
+      <svg-icon-sprite
+        [src]="'assets/sprites/sprite.svg#icon-arrow-right'"
+        [width]="'13px'"
+        [classes]="'d-flex'"
+      ></svg-icon-sprite>
+    </div>
+  </div>
+</a>
