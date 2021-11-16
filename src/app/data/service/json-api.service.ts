@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import dummy from './json/dummy.json';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class JsonApiService {
-
-  constructor() { }
+  get(id?: string): Observable<any> {
+    return of(dummy.invoices);
+  }
 }
