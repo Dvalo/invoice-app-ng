@@ -4,15 +4,12 @@ import { Invoice } from 'src/app/data/schema/invoice';
 @Component({
   selector: 'app-invoice-item',
   templateUrl: './invoice-item.component.html',
-  styleUrls: ['./invoice-item.component.scss']
+  styleUrls: ['./invoice-item.component.scss'],
 })
 export class InvoiceItemComponent implements OnInit {
   @Input() invoice!: Invoice;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.invoice);
-  }
-
+  ngOnInit(): void {}
 }

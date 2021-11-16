@@ -9,6 +9,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('src/app/modules/home/home.module').then((m) => m.HomeModule),
   },
+  {
+    path: 'invoice/:id',
+    component: ContentLayoutComponent,
+    loadChildren: () =>
+      import('src/app/modules/invoice/invoice.module').then((m) => m.InvoiceModule),
+  },
 ];
 
 @NgModule({
