@@ -1,0 +1,80 @@
+.invoice-details {
+    background: var(--theme-primary);
+    padding: 24px;
+    border-radius: 8px;
+
+    h6 {
+        color: var(--theme-text-color);
+        font-weight: bold;
+    }
+
+    .invoice-title {
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+
+    .invoice-summary {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 48px;
+
+        .invoice-id {
+            font-size: 18px;
+            font-weight: bold;
+
+            span {
+                color: var(--theme-highlight-purple);
+            }
+        }
+    }
+    .invoice-address {
+        p {
+            font-size: 13px;
+            margin-bottom: 0;
+        }
+    }
+    .invoice-billing {
+        display: flex;
+        justify-content: space-between;
+        width: 60%;
+        margin-bottom: 80px;
+
+        .invoice-dates {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+    .invoice-products {
+        table {
+            width: 100%;
+            background: #252945;
+
+            thead {
+                td {
+                    font-size: 13px;
+                    padding: 24px;
+                }
+            }
+            tbody {
+                td {
+                    font-weight: bold;
+                    padding: 0 24px 24px;
+                }
+            }
+        }
+        .invoice-total {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: bold;
+            padding: 24px;
+            background: #0c0e16;
+            border-radius: 0 0 20px 20px;
+
+            .invoice-amount {
+                font-size: 32px;
+            }
+        }
+    }
+}
