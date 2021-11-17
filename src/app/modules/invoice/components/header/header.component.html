@@ -1,7 +1,15 @@
 <header>
   <div class="header-details">
     <p class="header-status">Status</p>
-    <div class="invoice-status paid"><span></span>Paid</div>
+    <div
+      [ngClass]="[
+        invoice.status === 'paid'
+          ? 'invoice-status paid'
+          : 'invoice-status pending'
+      ]"
+    >
+      <span></span>{{ invoice.status | titlecase }}
+    </div>
   </div>
   <div class="header-actions">
     <div class="btn btn-theme">Edit</div>
