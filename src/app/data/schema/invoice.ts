@@ -7,8 +7,8 @@ export interface Invoice {
     clientName: string;
     clientEmail: string;
     status: string;
-    senderAddress: Address[];
-    clientAddress: Address[];
+    senderAddress: Address;
+    clientAddress: Address;
     items: Item[];
     total: number;
 }

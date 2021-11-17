@@ -8,7 +8,7 @@ import { Invoice } from 'src/app/data/schema/invoice';
   styleUrls: ['./invoice.component.scss'],
 })
 export class InvoiceComponent implements OnInit {
-  invoice: Invoice[] = [];
+  invoice!: Invoice;
 
   constructor(
     private jsonApiService: JsonApiService,
@@ -16,9 +16,10 @@ export class InvoiceComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
-    this.jsonApiService.get(this.router.snapshot.paramMap.get('id')!).subscribe((data) => {
-      this.invoice = data;
-    });
+    this.jsonApiService
+      .get(this.router.snapshot.paramMap.get('id')!)
+      .subscribe((data) => {
+        this.invoice = data;
+      });
   }
 }
