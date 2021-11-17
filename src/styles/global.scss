@@ -10,14 +10,17 @@ body {
 
 // Buttons
 .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 48px;
     font-weight: bold;
-    border-radius: 25px;
+    border-radius: 15px;
+    min-width: 80px;
 
     &.btn-w-icon {
-        display: flex;
-        align-items: center;
         padding-left: 6px;
+        border-radius: 25px;
         
         .btn-icon-wrapper {
             display: flex;
@@ -38,6 +41,10 @@ body {
         @include button-variant($highlight-purple, $highlight-purple);
         border: none !important;
     }
+    &.btn-red {
+        @include button-variant($highlight-red, $highlight-red);
+        border: none !important;
+    }
 }
 
 // Icons
@@ -53,6 +60,7 @@ body {
     justify-content: center;
     height: 40px;
     width: 100px;
+    border-radius: 6px;
     font-weight: bold;
     font-size: 12px;
 
