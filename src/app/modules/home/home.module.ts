@@ -6,7 +6,6 @@ import { HomeComponent } from './page/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { InvoiceListComponent } from './components/invoice-list/invoice-list.component';
 import { InvoiceItemComponent } from './components/invoice-list/invoice-item/invoice-item.component';
-import { InvoiceFormComponent } from './components/invoice-form/invoice-form.component';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { IconSpriteModule } from 'ng-svg-icon-sprite';
@@ -16,7 +15,6 @@ import { IconSpriteModule } from 'ng-svg-icon-sprite';
     HomeComponent,
     HeaderComponent,
     InvoiceItemComponent,
-    InvoiceFormComponent,
     InvoiceListComponent,
   ],
   imports: [CommonModule, HomeRoutingModule, IconSpriteModule],

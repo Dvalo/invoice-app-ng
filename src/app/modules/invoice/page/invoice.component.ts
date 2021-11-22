@@ -22,7 +22,7 @@ export class InvoiceComponent implements OnInit {
       .get(this.router.snapshot.paramMap.get('id')!)
       .subscribe((data) => {
         this.invoice = data;
+        this.titleService.setTitle(`Invoice ${this.invoice.id} | Invoice App`);
       });
-    this.titleService.setTitle(`Invoice ${this.invoice.id} | Invoice App`);
   }
 }
