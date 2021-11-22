@@ -1,5 +1,9 @@
-<div class="drawer-backdrop"></div>
-<div class="form-drawer">
+<div
+  class="drawer-backdrop"
+  [hidden]="!isVisible"
+  (click)="closeDrawer()"
+></div>
+<div class="form-drawer" [hidden]="!isVisible">
   <form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
     <h3>Create Invoice</h3>
     <div class="form-fields-wrapper">

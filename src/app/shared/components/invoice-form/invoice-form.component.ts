@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { DrawerService } from '../../services/drawer.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-invoice-form',
@@ -7,7 +9,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./invoice-form.component.scss'],
 })
 export class InvoiceFormComponent implements OnInit {
+  isVisible!: boolean;
   invoiceForm!: FormGroup;
+  subscription!: Subscription;
   paymentTermsProps = {
     options: [
       { label: 'Net 1 Day', value: 1 },
@@ -17,11 +21,19 @@ export class InvoiceFormComponent implements OnInit {
     ],
   };
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private drawerService: DrawerService
+  ) {
+    this.isVisible = drawerService.isToggled;
     this.createInvoiceForm();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.drawerService.drawerToggle.subscribe(
+      (value) => (this.isVisible = value)
+    );
+  }
 
   createInvoiceForm() {
     this.invoiceForm = this.formBuilder.group({
@@ -46,6 +58,10 @@ export class InvoiceFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('Your form data : ', this.invoiceForm.value);
+    console.log('form data : ', this.invoiceForm.value);
+  }
+
+  closeDrawer() {
+    this.drawerService.closeDrawer();
   }
 }

@@ -3,6 +3,7 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
+    transition: 0.3s ease-in-out;
 }
 
 .form-drawer {
@@ -10,9 +11,17 @@
     height: 100%;
     padding: 56px 0 32px 56px;
     max-width: 35vw;
-    margin-left: 85px;
     background: var(--theme-primary-dark);
+    left: -600px;
+    animation: slideIn 0.6s forwards;
 }
+
+@keyframes slideIn {
+    100% {
+      left: 85px;
+    }
+  }
+  
 
 .form-fields-wrapper {
     height: calc(100vh - 130px);
