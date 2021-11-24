@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DrawerService } from '../../services/drawer.service';
 import { Subscription } from 'rxjs';
 
@@ -38,22 +38,22 @@ export class InvoiceFormComponent implements OnInit {
   createInvoiceForm() {
     this.invoiceForm = this.formBuilder.group({
       senderAddress: this.formBuilder.group({
-        street: [''],
-        city: [''],
-        postCode: [''],
-        country: [''],
+        street: ['', Validators.required],
+        city: ['', Validators.required],
+        postCode: ['', Validators.required],
+        country: ['', Validators.required],
       }),
-      clientName: [''],
-      clientEmail: [''],
+      clientName: ['', Validators.required],
+      clientEmail: ['', [Validators.required, Validators.email]],
       clientAddress: this.formBuilder.group({
-        street: [''],
-        city: [''],
-        postCode: [''],
-        country: [''],
+        street: ['', Validators.required],
+        city: ['', Validators.required],
+        postCode: ['', Validators.required],
+        country: ['', Validators.required],
       }),
-      invoiceDate: [''],
-      paymentTerms: [''],
-      description: [''],
+      invoiceDate: ['', Validators.required],
+      paymentTerms: ['', Validators.required],
+      description: ['', [Validators.required, Validators.minLength(4)]],
     });
   }
 

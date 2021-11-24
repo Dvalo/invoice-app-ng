@@ -4,47 +4,47 @@
   (click)="closeDrawer()"
 ></div>
 <div class="form-drawer" [hidden]="!isVisible">
-  <form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()" novalidate>
     <h3>Create Invoice</h3>
     <div class="form-fields-wrapper">
       <p class="form-section-title">Bill From</p>
       <div class="form-wrapper sender" formGroupName="senderAddress">
         <div class="form-control">
-          <label for="street-from">Street Address</label>
           <input
             type="text"
             id="street-from"
             formControlName="street"
             autocomplete="off"
           />
+          <label for="street-from">Street Address</label>
         </div>
         <div class="form-control-wrapper">
           <div class="form-control">
-            <label for="city-from">City</label>
             <input
               type="text"
               id="city-from"
               formControlName="city"
               autocomplete="off"
             />
+            <label for="city-from">City</label>
           </div>
           <div class="form-control">
-            <label for="post-from">Post Code</label>
             <input
               type="text"
               id="post-from"
               formControlName="postCode"
               autocomplete="off"
             />
+            <label for="post-from">Post Code</label>
           </div>
           <div class="form-control">
-            <label for="country-from">Country</label>
             <input
               type="text"
               id="country-from"
               formControlName="country"
               autocomplete="off"
             />
+            <label for="country-from">Country</label>
           </div>
         </div>
       </div>
@@ -52,76 +52,75 @@
       <p class="form-section-title">Bill To</p>
 
       <div class="form-control">
-        <label for="client-name">Client's Name</label>
         <input
           type="text"
           id="client-name"
           formControlName="clientName"
           autocomplete="off"
         />
+        <label for="client-name">Client's Name</label>
       </div>
       <div class="form-control">
-        <label for="client-email">Client's Email</label>
         <input
           type="text"
           id="client-email"
           formControlName="clientEmail"
           autocomplete="off"
         />
+        <label for="client-email">Client's Email</label>
       </div>
 
       <div class="form-wrapper sender" formGroupName="clientAddress">
         <div class="form-control">
-          <label for="street-to">Street Address</label>
           <input
             type="text"
             id="street-to"
             formControlName="street"
             autocomplete="off"
           />
+          <label for="street-to">Street Address</label>
         </div>
         <div class="form-control-wrapper">
           <div class="form-control">
-            <label for="city-to">City</label>
             <input
               type="text"
               id="city-to"
               formControlName="city"
               autocomplete="off"
             />
+            <label for="city-to">City</label>
           </div>
           <div class="form-control">
-            <label for="post-to">Post Code</label>
             <input
               type="text"
               id="post-to"
               formControlName="postCode"
               autocomplete="off"
             />
+            <label for="post-to">Post Code</label>
           </div>
           <div class="form-control">
-            <label for="country-to">Country</label>
             <input
               type="text"
               id="country-to"
               formControlName="country"
               autocomplete="off"
             />
+            <label for="country-to">Country</label>
           </div>
         </div>
       </div>
       <div class="form-control-wrapper">
         <div class="form-control">
-          <label for="invoice-date">Invoice Date</label>
           <input
             type="date"
             id="invoice-date"
             formControlName="invoiceDate"
             autocomplete="off"
           />
+          <label for="invoice-date">Invoice Date</label>
         </div>
         <div class="form-control">
-          <label for="payment-terms">Payment Terms</label>
           <select
             id="payment-terms"
             formControlName="paymentTerms"
@@ -134,16 +133,17 @@
               {{ term.label }}
             </option>
           </select>
+          <label for="payment-terms">Payment Terms</label>
         </div>
       </div>
       <div class="form-control">
-        <label for="description">Description</label>
         <input
           type="text"
           id="description"
           formControlName="description"
           autocomplete="off"
         />
+        <label for="description">Description</label>
       </div>
     </div>
   </form>

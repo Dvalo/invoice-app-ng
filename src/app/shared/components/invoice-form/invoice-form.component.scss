@@ -1,3 +1,5 @@
+@import "src/styles/base";
+
 .drawer-backdrop {
     position: fixed;
     width: 100%;
@@ -44,6 +46,8 @@
     font-weight: bold;
 }
 .form-control {
+    display: flex;
+    flex-direction: column-reverse;
     height: auto;
     background: none;
     border: none;
@@ -54,6 +58,7 @@
         display: block;
         font-size: 13px;
         color: var(--theme-text-color-secondary);
+        transition: 0.3s ease;
     }
     input,
     select {
@@ -67,6 +72,14 @@
         border: 1px solid var(--theme-primary-light);
         outline: none;
         transition: 0.3s ease;
+
+        &.ng-touched.ng-invalid {
+            border-color: $highlight-red;
+
+            ~label {
+                color: $highlight-red;
+            }
+        }
 
         &:focus,
         &:active,
