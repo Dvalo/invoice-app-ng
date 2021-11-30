@@ -1,7 +1,7 @@
-<div class="invoice-details">
+<div class="invoice-details" *ngIf="invoice">
   <div class="invoice-summary">
     <div class="invoice-summary-details">
-      <div class="invoice-id"><span>#</span>{{ invoice.id }}</div>
+      <div class="invoice-id"><span>#</span>{{ invoice._id }}</div>
       <div class="invoice-desc">{{ invoice.description }}</div>
     </div>
     <div class="invoice-summary-address invoice-address">

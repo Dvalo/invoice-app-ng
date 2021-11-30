@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { JsonApiService } from 'src/app/data/service/json-api.service';
+import { InvoiceService } from 'src/app/data/service/invoice.service';
 import { Invoice } from 'src/app/data/schema/invoice';
 @Component({
   selector: 'app-invoice',
@@ -12,17 +12,17 @@ export class InvoiceComponent implements OnInit {
   invoice!: Invoice;
 
   constructor(
-    private jsonApiService: JsonApiService,
+    private invoiceService: InvoiceService,
     private router: ActivatedRoute,
     private titleService: Title
   ) {}
 
   ngOnInit(): void {
-    this.jsonApiService
-      .get(this.router.snapshot.paramMap.get('id')!)
+    this.invoiceService
+      .getInvoice(this.router.snapshot.paramMap.get('id')!)
       .subscribe((data) => {
         this.invoice = data;
-        this.titleService.setTitle(`Invoice ${this.invoice.id} | Invoice App`);
+        this.titleService.setTitle(`Invoice ${this.invoice._id} | Invoice App`);
       });
   }
 }

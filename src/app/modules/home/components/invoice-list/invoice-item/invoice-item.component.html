@@ -1,6 +1,6 @@
-<a href="invoice/{{ invoice.id | lowercase }}" class="invoice-item">
+<a href="invoice/{{ invoice._id | lowercase }}" class="invoice-item">
   <div class="invoice-general-details">
-    <div class="invoice-id"><span>#</span>{{ invoice.id }}</div>
+    <div class="invoice-id"><span>#</span>{{ invoice._id }}</div>
     <div class="invoice-date invoice-date-d">
       Due {{ invoice.paymentDue | date: "dd MMM yyyy" }}
     </div>

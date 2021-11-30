@@ -8,7 +8,7 @@ import { Invoice } from 'src/app/data/schema/invoice';
 })
 export class HeaderComponent implements OnInit {
   @Input() invoice!: Invoice;
-  
+
   constructor() {}
 
   ngOnInit(): void {}
