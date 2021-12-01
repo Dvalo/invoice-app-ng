@@ -4,7 +4,7 @@
   (click)="closeDrawer()"
 ></div>
 <div class="form-drawer" [hidden]="!isVisible">
-  <form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()" novalidate>
+  <form [formGroup]="invoiceForm" novalidate>
     <h3>Create Invoice</h3>
     <div class="form-fields-wrapper">
       <p class="form-section-title">Bill From</p>
@@ -144,6 +144,81 @@
           autocomplete="off"
         />
         <label for="description">Description</label>
+      </div>
+
+      <p class="form-section-title">Item List</p>
+
+      <div class="form-wrapper sender" formArrayName="items">
+        <div
+          class="form-control-wrapper"
+          *ngFor="let item of items.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <div class="form-control">
+            <input
+              type="text"
+              id="item-name"
+              formControlName="itemName"
+              autocomplete="off"
+            />
+            <label for="item-name">Item Name</label>
+          </div>
+          <div class="form-control">
+            <input
+              type="text"
+              id="item-quantity"
+              formControlName="quantity"
+              autocomplete="off"
+            />
+            <label for="item-quantity">Quantity</label>
+          </div>
+          <div class="form-control">
+            <input
+              type="text"
+              id="item-price"
+              formControlName="price"
+              autocomplete="off"
+            />
+            <label for="item-price">Price</label>
+          </div>
+          <div class="form-control">
+            <input
+              type="text"
+              id="item-total"
+              autocomplete="off"
+              [value]="
+                item.get('quantity')!!.value * item.get('price')!!.value
+                  | number: '1.2-2'
+              "
+              disabled
+            />
+            <label for="item-total">Total</label>
+          </div>
+          <div class="form-icon">
+            <div class="icon-wrapper" (click)="removeItem(i)">
+              <svg-icon-sprite
+                [src]="'assets/sprites/sprite.svg#icon-delete'"
+                [width]="'25px'"
+              ></svg-icon-sprite>
+            </div>
+          </div>
+        </div>
+        <button
+          type="button"
+          class="btn btn-theme-primary w-100"
+          (click)="addItem()"
+        >
+          Add Item
+        </button>
+      </div>
+    </div>
+    <div class="form-footer">
+      <div class="form-footer-inner">
+        <button type="button" class="btn btn-theme-primary">Discard</button>
+        <button type="button" class="btn btn-theme-primary">
+          Save as Draft
+        </button>
+        <button class="btn btn-purple" (click)="onSubmit()">Save & Send</button>
       </div>
     </div>
   </form>

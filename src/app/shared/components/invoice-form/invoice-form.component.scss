@@ -26,9 +26,9 @@
   
 
 .form-fields-wrapper {
-    height: calc(100vh - 130px);
+    height: calc(100vh - 180px);
+    padding: 20px 20px 20px 0;
     overflow-y: auto;
-    padding-right: 32px;
 }
 
 .form-control-wrapper {
@@ -85,6 +85,33 @@
         &:active,
         &:focus-visible {
             border-color: var(--theme-highlight-purple);
+        }
+    }
+}
+.form-icon {
+    display: flex;
+    align-items: center;
+    color: var(--theme-highlight-purple);
+
+    .icon-wrapper {
+        cursor: pointer;
+    }
+}
+.form-footer {
+    padding-right: 36px;
+
+    .form-footer-inner {
+        display: flex;
+        padding-top: 20px;
+        border-top: 2px solid var(--theme-highlight-purple);
+    }
+
+    .btn {
+        &:first-child {
+            margin-right: auto;
+        }
+        &:last-child {
+            margin-left: 12px;
         }
     }
 }

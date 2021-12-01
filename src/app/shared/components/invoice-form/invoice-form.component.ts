@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { DrawerService } from '../../services/drawer.service';
+import { InvoiceService } from 'src/app/data/service/invoice.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -22,6 +23,7 @@ export class InvoiceFormComponent implements OnInit {
   };
 
   constructor(
+    private invoiceService: InvoiceService,
     private formBuilder: FormBuilder,
     private drawerService: DrawerService
   ) {
@@ -54,14 +56,45 @@ export class InvoiceFormComponent implements OnInit {
       invoiceDate: ['', Validators.required],
       paymentTerms: ['', Validators.required],
       description: ['', [Validators.required, Validators.minLength(4)]],
+      items: this.formBuilder.array([this.newItem()]),
     });
   }
 
   onSubmit() {
-    console.log('form data : ', this.invoiceForm.value);
+    let formValues = this.invoiceForm.value;
+    if (this.invoiceForm.invalid) {
+      this.invoiceForm.markAllAsTouched();
+      // return;
+    }
+    formValues.createdAt = new Date();
+    console.log('form status : ', this.invoiceForm.valid);
+    console.log('form data : ', formValues);
   }
 
   closeDrawer() {
     this.drawerService.closeDrawer();
+  }
+
+  newItem(): FormGroup {
+    return this.formBuilder.group({
+      itemName: ['', Validators.required],
+      quantity: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      price: [
+        '',
+        [Validators.required, Validators.pattern('[0-9]+(.[0-9]{1,2})?$')],
+      ],
+    });
+  }
+
+  addItem() {
+    this.items.push(this.newItem());
+  }
+
+  removeItem(i: number) {
+    this.items.removeAt(i);
+  }
+
+  get items(): FormArray {
+    return this.invoiceForm.get('items') as FormArray;
   }
 }
