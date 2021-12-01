@@ -9,11 +9,15 @@ import { Invoice } from '../schema/invoice';
 export class InvoiceService {
   constructor(private http: HttpClient) {}
 
-  getInvoices(): Observable<any[]> {
+  getInvoices(): Observable<Invoice[]> {
     return this.http.get<Invoice[]>('http://localhost:3500/invoices');
   }
 
-  getInvoice(id: string): Observable<any> {
+  getInvoice(id: string): Observable<Invoice> {
     return this.http.get<Invoice>(`http://localhost:3500/invoices/${id}`);
+  }
+
+  createInvoice(invoice: Invoice): Observable<Invoice> {
+    return this.http.post<Invoice>(`http://localhost:3500/invoices/`, invoice);
   }
 }
