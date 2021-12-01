@@ -45,6 +45,14 @@ body {
         @include button-variant($highlight-red, $highlight-red);
         border: none !important;
     }
+    &.btn-theme {
+        color: var(--theme-text-color-secondary);
+        background: var(--theme-primary-dark);
+    }
+    &.btn-theme-primary {
+        color: var(--theme-text-color-secondary);
+        background: var(--theme-primary);
+    }
 }
 
 // Icons
