@@ -53,8 +53,11 @@ export class InvoiceFormComponent implements OnInit {
         postCode: ['', Validators.required],
         country: ['', Validators.required],
       }),
-      invoiceDate: ['', Validators.required],
-      paymentTerms: ['', Validators.required],
+      invoiceDate: [
+        new Date().toISOString().substring(0, 10),
+        Validators.required,
+      ],
+      paymentTerms: [7, Validators.required],
       description: ['', [Validators.required, Validators.minLength(4)]],
       items: this.formBuilder.array([this.newItem()]),
     });
@@ -77,10 +80,10 @@ export class InvoiceFormComponent implements OnInit {
 
   newItem(): FormGroup {
     return this.formBuilder.group({
-      itemName: ['', Validators.required],
-      quantity: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      itemName: ['Item Name', Validators.required],
+      quantity: ['1', [Validators.required, Validators.pattern('^[0-9]*$')]],
       price: [
-        '',
+        '25',
         [Validators.required, Validators.pattern('[0-9]+(.[0-9]{1,2})?$')],
       ],
     });
