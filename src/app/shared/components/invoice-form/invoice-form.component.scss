@@ -60,6 +60,14 @@
         color: var(--theme-text-color-secondary);
         transition: 0.3s ease;
     }
+    &.disabled {
+        input,
+        select {
+            opacity: 0.75;
+            border-color: transparent;
+            pointer-events: none;
+        }
+    }
     input,
     select {
         width: 100%;

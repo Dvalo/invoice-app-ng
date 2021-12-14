@@ -115,7 +115,7 @@
           <input
             type="date"
             id="invoice-date"
-            formControlName="invoiceDate"
+            formControlName="paymentDue"
             autocomplete="off"
           />
           <label for="invoice-date">Invoice Date</label>
@@ -158,39 +158,37 @@
             <input
               type="text"
               id="item-name"
-              formControlName="itemName"
+              formControlName="name"
               autocomplete="off"
             />
             <label for="item-name">Item Name</label>
           </div>
           <div class="form-control">
             <input
-              type="text"
+              type="number"
               id="item-quantity"
               formControlName="quantity"
               autocomplete="off"
+              (input)="calculateTotal(item)"
             />
             <label for="item-quantity">Quantity</label>
           </div>
           <div class="form-control">
             <input
-              type="text"
+              type="number"
               id="item-price"
               formControlName="price"
               autocomplete="off"
+              (input)="calculateTotal(item)"
             />
             <label for="item-price">Price</label>
           </div>
-          <div class="form-control">
+          <div class="form-control disabled">
             <input
               type="text"
               id="item-total"
+              formControlName="total"
               autocomplete="off"
-              [value]="
-                item.get('quantity')!!.value * item.get('price')!!.value
-                  | number: '1.2-2'
-              "
-              disabled
             />
             <label for="item-total">Total</label>
           </div>

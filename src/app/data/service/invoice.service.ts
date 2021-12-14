@@ -18,6 +18,6 @@ export class InvoiceService {
   }
 
   createInvoice(invoice: Invoice): Observable<Invoice> {
-    return this.http.post<Invoice>(`http://localhost:3500/invoices/`, invoice);
+    return this.http.post<Invoice>('http://localhost:3500/invoices', invoice);
   }
 }

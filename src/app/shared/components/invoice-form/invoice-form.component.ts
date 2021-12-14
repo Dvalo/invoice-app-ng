@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./invoice-form.component.scss'],
 })
 export class InvoiceFormComponent implements OnInit {
+  invoiceStatus: string = 'Pending';
   isVisible!: boolean;
   invoiceForm!: FormGroup;
   subscription!: Subscription;
@@ -53,7 +54,7 @@ export class InvoiceFormComponent implements OnInit {
         postCode: ['', Validators.required],
         country: ['', Validators.required],
       }),
-      invoiceDate: [
+      paymentDue: [
         new Date().toISOString().substring(0, 10),
         Validators.required,
       ],
@@ -67,11 +68,23 @@ export class InvoiceFormComponent implements OnInit {
     let formValues = this.invoiceForm.value;
     if (this.invoiceForm.invalid) {
       this.invoiceForm.markAllAsTouched();
-      // return;
+      return;
     }
-    formValues.createdAt = new Date();
-    console.log('form status : ', this.invoiceForm.valid);
-    console.log('form data : ', formValues);
+    formValues.createdAt = new Date().toISOString();
+    formValues.status = this.invoiceStatus;
+    let total = 0;
+    formValues.items.map((item: any) => {
+      total += item.total;
+    });
+    formValues.total = parseFloat((total).toFixed(2));
+    this.invoiceService.createInvoice(formValues).subscribe({
+      next: (data) => {
+        // console.log('Success ', data);
+      },
+      error: (error) => {
+        console.error('There was an error!', error);
+      },
+    });
   }
 
   closeDrawer() {
@@ -80,17 +93,24 @@ export class InvoiceFormComponent implements OnInit {
 
   newItem(): FormGroup {
     return this.formBuilder.group({
-      itemName: ['Item Name', Validators.required],
-      quantity: ['1', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      name: ['Item Name', Validators.required],
+      quantity: [1, [Validators.required, Validators.pattern('^[0-9]*$')]],
       price: [
-        '25',
+        25,
         [Validators.required, Validators.pattern('[0-9]+(.[0-9]{1,2})?$')],
       ],
+      total: [25.00],
     });
   }
 
   addItem() {
     this.items.push(this.newItem());
+  }
+
+  calculateTotal(item: any) {
+    let qnt = item.get('quantity').value;
+    let prc = item.get('price').value;
+    item.get('total').setValue(parseFloat((qnt * prc).toFixed(2)));
   }
 
   removeItem(i: number) {
