@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { DrawerService } from '../../services/drawer.service';
 import { InvoiceService } from 'src/app/data/service/invoice.service';
@@ -26,7 +27,8 @@ export class InvoiceFormComponent implements OnInit {
   constructor(
     private invoiceService: InvoiceService,
     private formBuilder: FormBuilder,
-    private drawerService: DrawerService
+    private drawerService: DrawerService,
+    private toastr: ToastrService
   ) {
     this.isVisible = drawerService.isToggled;
     this.createInvoiceForm();
@@ -68,6 +70,7 @@ export class InvoiceFormComponent implements OnInit {
     let formValues = this.invoiceForm.value;
     if (this.invoiceForm.invalid) {
       this.invoiceForm.markAllAsTouched();
+      this.unsuccessfulCreation();
       return;
     }
     formValues.createdAt = new Date().toISOString();
@@ -76,13 +79,14 @@ export class InvoiceFormComponent implements OnInit {
     formValues.items.map((item: any) => {
       total += item.total;
     });
-    formValues.total = parseFloat((total).toFixed(2));
+    formValues.total = parseFloat(total.toFixed(2));
     this.invoiceService.createInvoice(formValues).subscribe({
       next: (data) => {
-        // console.log('Success ', data);
+        this.successfulCreation();
       },
       error: (error) => {
         console.error('There was an error!', error);
+        this.unsuccessfulCreation();
       },
     });
   }
@@ -99,7 +103,7 @@ export class InvoiceFormComponent implements OnInit {
         25,
         [Validators.required, Validators.pattern('[0-9]+(.[0-9]{1,2})?$')],
       ],
-      total: [25.00],
+      total: [25.0],
     });
   }
 
@@ -115,6 +119,20 @@ export class InvoiceFormComponent implements OnInit {
 
   removeItem(i: number) {
     this.items.removeAt(i);
+  }
+
+  successfulCreation() {
+    this.toastr.success('', 'Invoice has been created!', {
+      progressBar: true,
+      timeOut: 2000,
+    });
+  }
+
+  unsuccessfulCreation() {
+    this.toastr.error('Make sure you have filled out fields correctly!', 'Unable to create invoice!', {
+      progressBar: true,
+      timeOut: 2500,
+    });
   }
 
   get items(): FormArray {
