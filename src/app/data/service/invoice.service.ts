@@ -20,4 +20,12 @@ export class InvoiceService {
   createInvoice(invoice: Invoice): Observable<Invoice> {
     return this.http.post<Invoice>('http://localhost:3500/invoices', invoice);
   }
+
+  updateInvoice(id: string, invoice: Invoice): Observable<Invoice> {
+    return this.http.put<Invoice>(`http://localhost:3500/invoices/${id}`, invoice);
+  }
+
+  deleteInvoice(id: string): Observable<Invoice> {
+    return this.http.delete<Invoice>(`http://localhost:3500/invoices/${id}`);
+  }
 }
