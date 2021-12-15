@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { InvoiceService } from 'src/app/data/service/invoice.service';
 import { Invoice } from 'src/app/data/schema/invoice';
@@ -13,10 +14,25 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private invoiceService: InvoiceService,
+    private router: Router,
     private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {}
+
+  deleteInvoice(): void {
+    this.invoiceService.deleteInvoice(this.invoice._id).subscribe({
+      next: () => {
+        this.router.navigate(['/']);
+      },
+      error: () => {
+        this.errorToastr(
+          'Please try again later.',
+          'Unable to delete this invoice!'
+        );
+      },
+    });
+  }
 
   updateStatus(): void {
     this.invoice.status = 'paid';
@@ -24,24 +40,24 @@ export class HeaderComponent implements OnInit {
       .updateInvoice(this.invoice._id, this.invoice)
       .subscribe({
         next: () => {
-          this.successfulUpdate();
+          this.successToastr('', 'Invoice marked as paid!');
         },
         error: () => {
-          this.unsuccessfulUpdate();
+          this.errorToastr('', 'Unable to mark invoice as paid!');
           this.invoice.status = 'pending';
         },
       });
   }
 
-  successfulUpdate() {
-    this.toastr.success('', 'Invoice marked as paid!', {
+  successToastr(message: string, title: string) {
+    this.toastr.success(message, title, {
       progressBar: true,
       timeOut: 2000,
     });
   }
 
-  unsuccessfulUpdate() {
-    this.toastr.error('', 'Unable to mark invoice as paid!', {
+  errorToastr(message: string, title: string) {
+    this.toastr.error(message, title, {
       progressBar: true,
       timeOut: 2500,
     });
