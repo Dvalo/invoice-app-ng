@@ -9,6 +9,7 @@ import { Invoice } from 'src/app/data/schema/invoice';
   styleUrls: ['./invoice.component.scss'],
 })
 export class InvoiceComponent implements OnInit {
+  invoiceId!: string;
   invoice!: Invoice;
 
   constructor(
@@ -18,11 +19,10 @@ export class InvoiceComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.invoiceService
-      .getInvoice(this.router.snapshot.paramMap.get('id')!)
-      .subscribe((data) => {
-        this.invoice = data;
-        this.titleService.setTitle(`Invoice ${this.invoice._id} | Invoice App`);
-      });
+    this.invoiceId = this.router.snapshot.paramMap.get('id')!;
+    this.invoiceService.getInvoice(this.invoiceId).subscribe((data) => {
+      this.invoice = data;
+      this.titleService.setTitle(`Invoice ${this.invoice._id} | Invoice App`);
+    });
   }
 }

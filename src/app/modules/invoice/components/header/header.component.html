@@ -26,5 +26,8 @@
   <div class="header-actions">
     <div class="btn btn-theme">Edit</div>
     <div class="btn btn-red">Delete</div>
+    <div class="btn btn-purple" *ngIf="invoice.status === 'pending'" (click)="updateStatus()">
+      Mark as Paid
+    </div>
   </div>
 </header>

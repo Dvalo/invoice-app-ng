@@ -46,7 +46,7 @@ header {
         display: flex;
 
         .btn {
-            &:last-child {
+            &:not(:first-child) {
                 margin-left: 16px;
             }
         }
