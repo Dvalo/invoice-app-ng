@@ -1,0 +1,34 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">Invoice deletion</h4>
+  <button
+    type="button"
+    class="close"
+    aria-describedby="modal-title"
+    (click)="activeModal.close('Cross click')"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>
+    <strong
+      >Are you sure you want to delete invoice with id
+      <span class="text-danger">"#{{ invoiceId }}"</span>?</strong
+    >
+  </p>
+  <p>
+    <span class="text-danger">This operation can not be undone.</span>
+  </p>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-theme"
+    (click)="activeModal.close('Cancel click')"
+  >
+    Cancel
+  </button>
+  <button type="button" class="btn btn-danger" (click)="passBack()">
+    Confirm Deletion
+  </button>
+</div>

@@ -1,0 +1,20 @@
+::ng-deep {
+    .modal-content {
+        background-color: var(--theme-primary);
+    }
+    .modal-header,
+    .modal-footer {
+        border-color: var(--theme-primary-light);
+    }
+    .close {
+        color: var(--theme-text-color);
+        text-shadow: 0 1px 0 var(--theme-text-color);
+        outline: none;
+        transition: 0.3s ease-in-out;
+
+        &:hover {
+            color: var(--theme-highlight-purple);
+            text-shadow: 0 1px 0 var(--theme-highlight-purple);
+        }
+    }
+}
