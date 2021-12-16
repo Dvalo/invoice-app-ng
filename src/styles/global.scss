@@ -94,4 +94,12 @@ body {
             background: $highlight-orange;
         }
     }
+    &.draft {
+        color: var(--theme-text-color-secondary);
+        background: rgba(223, 227, 250, 0.06);
+
+        span {
+            background: var(--theme-text-color-secondary);
+        }
+    }
 }

@@ -11,7 +11,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./invoice-form.component.scss'],
 })
 export class InvoiceFormComponent implements OnInit {
-  invoiceStatus: string = 'Pending';
   isVisible!: boolean;
   invoiceForm!: FormGroup;
   subscription!: Subscription;
@@ -66,7 +65,7 @@ export class InvoiceFormComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(invoiceStatus: string) {
     let formValues = this.invoiceForm.value;
     if (this.invoiceForm.invalid) {
       this.invoiceForm.markAllAsTouched();
@@ -74,7 +73,8 @@ export class InvoiceFormComponent implements OnInit {
       return;
     }
     formValues.createdAt = new Date().toISOString();
-    formValues.status = this.invoiceStatus;
+    formValues.status = invoiceStatus;
+    formValues.paymentTerms = parseInt(formValues.paymentTerms);
     let total = 0;
     formValues.items.map((item: any) => {
       total += item.total;
@@ -129,10 +129,14 @@ export class InvoiceFormComponent implements OnInit {
   }
 
   unsuccessfulCreation() {
-    this.toastr.error('Make sure you have filled out fields correctly!', 'Unable to create invoice!', {
-      progressBar: true,
-      timeOut: 2500,
-    });
+    this.toastr.error(
+      'Make sure you have filled out fields correctly!',
+      'Unable to create invoice!',
+      {
+        progressBar: true,
+        timeOut: 2500,
+      }
+    );
   }
 
   get items(): FormArray {

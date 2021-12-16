@@ -13,13 +13,7 @@
       </div>
       <div class="invoice-price">£{{ invoice.total }}</div>
     </div>
-    <div
-      [ngClass]="[
-        invoice.status === 'paid'
-          ? 'invoice-status paid'
-          : 'invoice-status pending'
-      ]"
-    >
+    <div [ngClass]="'invoice-status ' + invoice.status">
       <span class="status-dot"></span>{{ invoice.status | titlecase }}
     </div>
     <div class="invoice-expand">

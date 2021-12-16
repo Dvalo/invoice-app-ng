@@ -213,10 +213,16 @@
     <div class="form-footer">
       <div class="form-footer-inner">
         <button type="button" class="btn btn-theme-primary">Discard</button>
-        <button type="button" class="btn btn-theme-primary">
+        <button
+          type="button"
+          class="btn btn-theme-primary"
+          (click)="onSubmit('draft')"
+        >
           Save as Draft
         </button>
-        <button class="btn btn-purple" (click)="onSubmit()">Save & Send</button>
+        <button class="btn btn-purple" (click)="onSubmit('pending')">
+          Save & Send
+        </button>
       </div>
     </div>
   </form>
