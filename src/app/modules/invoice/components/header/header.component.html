@@ -12,14 +12,7 @@
 <header *ngIf="invoice">
   <div class="header-details">
     <p class="header-status">Status</p>
-    <div
-      *ngIf="invoice.status"
-      [ngClass]="[
-        invoice.status === 'paid'
-          ? 'invoice-status paid'
-          : 'invoice-status pending'
-      ]"
-    >
+    <div *ngIf="invoice.status" [ngClass]="'invoice-status ' + invoice.status">
       <span></span>{{ invoice.status | titlecase }}
     </div>
   </div>

@@ -81,8 +81,9 @@ export class InvoiceFormComponent implements OnInit {
     });
     formValues.total = parseFloat(total.toFixed(2));
     this.invoiceService.createInvoice(formValues).subscribe({
-      next: (data) => {
+      next: () => {
         this.successfulCreation();
+        this.discardForm();
       },
       error: (error) => {
         console.error('There was an error!', error);
@@ -93,6 +94,11 @@ export class InvoiceFormComponent implements OnInit {
 
   closeDrawer() {
     this.drawerService.closeDrawer();
+  }
+
+  discardForm() {
+    this.closeDrawer();
+    this.invoiceForm.reset();
   }
 
   newItem(): FormGroup {
