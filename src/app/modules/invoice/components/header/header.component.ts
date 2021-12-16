@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { InvoiceService } from 'src/app/data/service/invoice.service';
 import { Invoice } from 'src/app/data/schema/invoice';
+import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +17,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private invoiceService: InvoiceService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {}
@@ -31,6 +34,17 @@ export class HeaderComponent implements OnInit {
           'Unable to delete this invoice!'
         );
       },
+    });
+  }
+
+  openModal(): void {
+    const invoiceId = this.invoice._id;
+    const modalRef = this.modalService.open(ConfirmationModalComponent);
+    modalRef.componentInstance.invoiceId = invoiceId;
+    modalRef.result.then((result) => {
+      if (result === invoiceId) {
+        this.deleteInvoice();
+      }
     });
   }
 
