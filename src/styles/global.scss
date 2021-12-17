@@ -4,6 +4,9 @@ body {
     &.theme-dark {
         @include spread-map($theme-map-dark);
     }
+    &.theme-light {
+        @include spread-map($theme-map-light);
+    }
     color: var(--theme-text-color-secondary);
     background: var(--theme-primary-dark);
 }
@@ -48,10 +51,18 @@ body {
     &.btn-theme {
         color: var(--theme-text-color-secondary);
         background: var(--theme-primary-dark);
+
+        &:hover {
+            background: var(--theme-primary-light);
+        }
     }
     &.btn-theme-primary {
         color: var(--theme-text-color-secondary);
         background: var(--theme-primary);
+
+        &:hover {
+            background: var(--theme-primary-light);
+        }
     }
 }
 

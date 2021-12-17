@@ -1,5 +1,8 @@
 $font-spartan: "Spartan", sans-serif;
 
+// global for both themes
+$theme-sidebar: #1e2139;
+
 // local usage
 $highlight-purple: #7c5dfa;
 $highlight-red: #ec5757;
@@ -21,4 +24,13 @@ $theme-map-dark: (
     $--theme-highlight-purple: $highlight-purple,
     $--theme-text-color: #ffffff,
     $--theme-text-color-secondary: #e0e4fa,
+);
+
+$theme-map-light: (
+    $--theme-primary: #f2f2f2,
+    $--theme-primary-light: #eef0fb,
+    $--theme-primary-dark: #f0efef,
+    $--theme-highlight-purple: $highlight-purple,
+    $--theme-text-color: #3f4462,
+    $--theme-text-color-secondary: #7983bf,
 );
